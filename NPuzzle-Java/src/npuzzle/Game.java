@@ -53,7 +53,6 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
 	private double fastestTime;
 
 	public Game() {
-		// test
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		addKeyListener(this);
