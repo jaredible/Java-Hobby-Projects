@@ -2,6 +2,7 @@ package renor.level.chunk;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import renor.level.Level;
 import renor.util.LongHashMap;
@@ -34,11 +35,13 @@ public class ChunkProviderClient implements IChunkProvider {
 					data[xx * 256 * 16 | zz * 256 | 64 - 1] = 2;
 		}
 
+		Random r = new Random();
+
 		if (x >= 0 && z >= 0 && x <= 12 && z <= 12) {
 			for (xx = 0; xx < 4; ++xx)
 				for (zz = 0; zz < 4; ++zz)
 					for (yy = 0; yy < 12 * 4; ++yy)
-						data[xx * 256 * 16 * 4 | zz * 256 * 4 | 64 + yy * 4] = 1;
+						data[xx * 256 * 16 * 4 | zz * 256 * 4 | 64 + yy * 4] = (byte) (r.nextInt(10) == 0 ? 3 : 1);
 
 			for (xx = 0; xx < 4; ++xx)
 				for (zz = 0; zz < 4; ++zz)

@@ -29,6 +29,8 @@ public class LevelClient extends Level {
 		// TODO initial chunk load test
 		// test!
 		if (clientChunkProvider != null) initialChunkLoadTest();
+
+		setLevelTime(22000);
 	}
 
 	private void initialChunkLoadTest() {

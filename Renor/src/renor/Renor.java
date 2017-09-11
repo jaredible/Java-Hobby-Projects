@@ -196,7 +196,7 @@ public class Renor implements Runnable {
 			public void run() {
 				while (running) {
 					try {
-						Thread.sleep(2147483647);
+						Thread.sleep(Integer.MAX_VALUE);
 					} catch (InterruptedException e) {
 						;
 					}
@@ -232,7 +232,9 @@ public class Renor implements Runnable {
 
 		if (os != Util.EnumOS.MACOS) {
 			// try {
-			// Display.setIcon(new ByteBuffer[] { readImage(new File(fileAssets, "/icons/icon_16x16.png")), readImage(new File(fileAssets, "/icons/icon_32x32.png")) });
+			// Display.setIcon(new ByteBuffer[] { readImage(new File(fileAssets,
+			// "/icons/icon_16x16.png")), readImage(new File(fileAssets,
+			// "/icons/icon_32x32.png")) });
 			// } catch (IOException e) {
 			// e.printStackTrace();
 			// }
@@ -796,7 +798,8 @@ public class Renor implements Runnable {
 		entityRenderer.getMouseOver(1.0f);
 		theProfiler.endStartSection("gameMode");
 
-		// if (!isGamePaused && theLevel != null) playerController.updateController();
+		// if (!isGamePaused && theLevel != null)
+		// playerController.updateController();
 
 		if (currentScreen != null) leftClickCounter = 10000;
 
@@ -870,7 +873,8 @@ public class Renor implements Runnable {
 					else {
 						if (currentScreen != null) currentScreen.handleKeyboardInput();
 						else {
-							// if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE) displayIngameMenu();
+							// if (Keyboard.getEventKey() ==
+							// Keyboard.KEY_ESCAPE) displayIngameMenu();
 							// TODO test
 							if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE && inGameHasFocus) setIngameNotInFocus();
 
@@ -901,6 +905,23 @@ public class Renor implements Runnable {
 							}
 
 							if (gameSettings.keyBindSmoothCamera.isPressed()) gameSettings.smoothCamera = !gameSettings.smoothCamera;
+
+							if (objectMouseOver != null && Keyboard.getEventKey() == Keyboard.KEY_Q) {
+								int x = objectMouseOver.blockX;
+								int y = objectMouseOver.blockY;
+								int z = objectMouseOver.blockZ;
+								EntityZombie zombie = new EntityZombie(theLevel);
+								zombie.setLocationAndAngles(x + 0.5, y + 2, z + 0.5, 0.0f, 0.0f);
+								theLevel.spawnEntityInLevel(zombie);
+							}
+
+							if (Keyboard.getEventKey() == Keyboard.KEY_N) {
+								if (theLevel != null) theLevel.setLevelTime(20000);
+							}
+							
+							if (Keyboard.getEventKey() == Keyboard.KEY_M) {
+								if (theLevel != null) theLevel.setLevelTime(0);
+							}
 						}
 					}
 				}
@@ -1147,20 +1168,20 @@ public class Renor implements Runnable {
 		File dir;
 
 		switch (EnumOSHelper.osIds[Util.getOSType().ordinal()]) {
-			case 1:
-			case 2:
-				dir = new File(userhome, '.' + filename + '/');
-				break;
-			case 3:
-				String env = System.getenv("APPDATA");
-				if (env != null) dir = new File(env, "." + filename + '/');
-				else dir = new File(userhome, '.' + filename + '/');
-				break;
-			case 4:
-				dir = new File(userhome, "Library/Application Support/" + filename);
-				break;
-			default:
-				dir = new File(userhome, filename + '/');
+		case 1:
+		case 2:
+			dir = new File(userhome, '.' + filename + '/');
+			break;
+		case 3:
+			String env = System.getenv("APPDATA");
+			if (env != null) dir = new File(env, "." + filename + '/');
+			else dir = new File(userhome, '.' + filename + '/');
+			break;
+		case 4:
+			dir = new File(userhome, "Library/Application Support/" + filename);
+			break;
+		default:
+			dir = new File(userhome, filename + '/');
 		}
 
 		if (!dir.exists() && !dir.mkdirs()) throw new RuntimeException("The working directory could not be created: " + dir);

@@ -28,7 +28,7 @@ public class GameSettings {
 	public KeyBinding keyBindUseItem = new KeyBinding("key.use", -99);
 	public KeyBinding keyBindPickBlock = new KeyBinding("key.pickItem", -98);
 	public KeyBinding keyBindTogglePerspective = new KeyBinding("key.togglePerspective", Keyboard.KEY_F5);
-	public KeyBinding keyBindSmoothCamera = new KeyBinding("key.smoothCamera", Keyboard.KEY_NONE);
+	public KeyBinding keyBindSmoothCamera = new KeyBinding("key.smoothCamera", Keyboard.KEY_Y);
 	public KeyBinding[] keyBindings;
 	public KeyBinding[] keyBindsHotBar;
 	public int guiScale = 0;

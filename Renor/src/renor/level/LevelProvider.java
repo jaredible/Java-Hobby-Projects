@@ -18,7 +18,7 @@ public class LevelProvider {
 
 		for (int i = 0; i <= 15; ++i) {
 			float v1 = 1.0f - (float) i / 15.0f;
-			lightBrightnessTable[i] = (1.0f - v1) / (v1 * 3.0f + 1.0f) * (1.0f - v0) + v0;
+			lightBrightnessTable[i] = (1.0f - v1) / (v1 * 1.0f + 1.0f) * (1.0f - v0) + v0;
 		}
 	}
 
