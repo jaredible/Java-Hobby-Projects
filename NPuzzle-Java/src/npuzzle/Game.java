@@ -28,7 +28,7 @@ public class Game extends Canvas implements MouseListener, MouseMotionListener, 
 	private static final long serialVersionUID = 1L;
 
 	public static boolean DEV;
-	public static int N = 2;
+	public static int N = 4;
 	public static final int SCALE = 100;
 	public static final String TITLE = "NPuzzle";
 
