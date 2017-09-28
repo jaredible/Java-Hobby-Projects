@@ -342,9 +342,9 @@ public class EntityRenderer {
 		if (renor.gameSettings.viewBobbing) setupViewBobbing(partialTickTime);
 
 		if (renor.gameSettings.thirdPersonView == 0 && !renor.gameSettings.hideGUI) {
-			// enableLightmap((double) partialTickTime);
-			// itemRenderer.renderItemInFirstPerson(partialTickTime);
-			// disableLightmap((double) partialTickTime);
+			enableLightmap((double) partialTickTime);
+			itemRenderer.renderItemInFirstPerson(partialTickTime);
+			disableLightmap((double) partialTickTime);
 		}
 
 		glPopMatrix();
@@ -824,7 +824,9 @@ public class EntityRenderer {
 		}
 
 		if (GLContext.getCapabilities().GL_NV_fog_distance) glFogi(34138, 34139);
-		// if (GLContext.getCapabilities().GL_NV_fog_distance) GL11.glFogi(NVFogDistance.GL_FOG_DISTANCE_MODE_NV, NVFogDistance.GL_EYE_RADIAL_NV);
+		// if (GLContext.getCapabilities().GL_NV_fog_distance)
+		// GL11.glFogi(NVFogDistance.GL_FOG_DISTANCE_MODE_NV,
+		// NVFogDistance.GL_EYE_RADIAL_NV);
 
 		glEnable(GL_COLOR_MATERIAL);
 		glColorMaterial(GL_FRONT, GL_AMBIENT);
